@@ -403,6 +403,14 @@ vector<vector <CallbackFunction>> permutations = {
 
     //PLL H
     {&M2, &U, &M2, &U2, &M2, &U, &M2}
+
+    // //HERE
+    // // permutação T
+    // {&R, &U, &R_, &U_, &R_, &F, &R2, &U_, &R_, &U_, &R, &U, &R_, &F},
+    // //Permutação Y para trocar de cantos(sem os F's inicial e final)
+    // {&R, &U_, &R_, &U_, &R, &U, &R_, &F_, &R, &U, &R_, &U_, &R_, &F, &R}
+
+
 };
 vector <CallbackFunction> rotations = {&X, &X2, &X_, &Y, &Y2, &Y_};
 vector <CallbackFunction> orientations = {&Z, &Z2, &Z_};

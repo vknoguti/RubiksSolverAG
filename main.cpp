@@ -37,20 +37,27 @@ class Solver1{
                         cube->ApplyMove(aux1, 0);
                         aux1 = "";
                     }
+
                     cube->calculate_fitness();
                     cubes.push_back(cube);
+
+        
                 }
             
                 //Evolve population
                 for(int g = 0; g < max_generations; g++){
                     //Display data about fitness and generation
-                    if(g % 10 == 0){
+                    if(g % 20 == 0){
                         cout << "Generation " << g << endl;
                         cout << "Current Fitness " << cubes[0]->fitness << endl << endl;
+                        cubes[0]->print();
                     }
+                    
                     
                     //Metholody evolutive that uses a list of algorithms(permutations), no limit in size to solutions and elitism in selection
                     if(evolve1(&cubes, g) == 1) return;
+
+                    
 
                 }  
                 //Genocide if passes max_generations
@@ -100,6 +107,11 @@ class Solver1{
                             break;
                     }
 
+                    // //HERE - Testing blinding 
+                    // for(int x = 0; x < rand() % 5; x++)
+                    //     copy->rnd_simple_move(1);
+                    // copy->rnd_permutation(1);
+
                     //OBS: It was verified that if we try to get a better solution everytime, the genetic algorithm 
                     //tends to keep steady without improving
                     // int new_fitness;
@@ -116,12 +128,15 @@ class Solver1{
                 }
 
                 (*cubes)[i]->calculate_fitness();
+                
             }
 
             //Sort population by fitness
             sort(cubes->begin(), cubes->end(), [](const Cube* lhs, const Cube* rhs){
                 return lhs->fitness < rhs->fitness;
             });
+
+            
 
             return 0;
         }
@@ -137,7 +152,7 @@ int main(){
     int population = 10000;
     int max_generations = 2000;
     int max_resets = 20;
-    int preserve_pop = (population * 0.1);
+    int preserve_pop = (population * 0.3);
 
     original->scramble(30);
     original->print();
